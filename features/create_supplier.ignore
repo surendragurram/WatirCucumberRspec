@@ -1,0 +1,59 @@
+Feature: Creating a new supplier, mgc, bu, catgories, product groups, customers, locations and ownsites from ui
+
+	We are creating an admin customer
+
+Background:
+	Given I am on the admin page
+	And I have admin access
+	And I am on the admin page and impersonate the customer 
+
+Scenario: Create a supplier 
+	And I create Supplier with Name, Address, Zip, City, Country 
+	And on, off and agin manual geo coding
+	When I select catgories, pg and bu
+	Then I should see "Risk Object created."
+ 
+Scenario: Create Business Units
+	Given I am on the BU page
+	When I create new BU
+	Then I should see created "Sprint 01 A"
+
+
+Scenario: Search Business Units
+    Given I am on the BU page and search for '" a "', '"TOP"', '"SUB"', '"Geschäftsbereich 2"' and '"A"'
+	Then I see the related search results 
+
+Scenario: Category
+	Given I am on the category page
+	And I create new and edit category 
+	Then I should see edited category "Sprint 0 CC"
+
+Scenario: Search Categories 
+	Given I am on the categories and I search for '"C"', '"TOP"', '"SUB"' and "Warengruppe 2"
+	Then I see the related "Warengruppe 12"
+
+@important
+Scenario: Create Product Groups 
+	Given I am on the pg page
+	When I create new pg and I edit existed pg
+	And I create again new pg and drag and drop  
+	Then I search for "Sprint 0 PG", "Produktgruppe 3" and "Produktgruppe 4"
+	
+Scenario: Create a customer 
+	And I create Customer with Name, Address, Zip, City, Country 
+	When I select Customer catgories, pg and bu
+	Then I should have "Risk Object created."
+
+Scenario: Create a Location 
+	Given I create new location with hotspot
+	And I create new location as risk object 
+	Then I should have "Risk Object created."
+	
+Scenario: Create a Own site  
+	Given I create new location with Own site 
+	Then I should have "Risk Object created."
+ 
+ Scenario: Search Categories 
+	Given I am on world map and search "Lieferant qm41 manuell", "Munich Aiport", "qm41 manuell" , "Kunde qm41 manuell" , "Standort qm41 manuell"
+
+	

@@ -1,0 +1,18 @@
+Feature: Creating a new Customer from admin
+
+	We are creating an admin customer
+
+Background:
+	Given I am on the admin page
+	And I have admin access
+
+Scenario: Create Customer Account
+	Given: I am on the customer page
+	And I create Customer with Name, Currency, Data Source
+	Then I should see "Customer created."
+
+Scenario: Impersonate created customer
+	Given: I have customer created
+	And I search for a customer with name "Automated Testing"
+	And I click button impersonate
+	Then I should be able to see World Map

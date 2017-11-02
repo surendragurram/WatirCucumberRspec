@@ -1,0 +1,14 @@
+Feature: Creating a new supplier, mgc, bu, catgories, product groups, customers, locations and ownsites from ui
+
+	We are creating an admin customer
+
+Background:
+	Given I am on the admin page
+	And I have admin access
+	And I am on the admin page and impersonate the customer 
+
+Scenario: Create Product Groups 
+	Given I am on the pg page
+	When I create new pg and I edit existed pg
+	And I create again new pg and drag and drop  
+	Then I search for "Sprint 0 PG", "Produktgruppe 3" and "Produktgruppe 4"
