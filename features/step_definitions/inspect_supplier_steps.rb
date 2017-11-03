@@ -8,7 +8,7 @@ Given("I am on admin page and inspect pagination of supplier + cutomer") do
   @browser.text.include?("Displaying 21 - 30").should == true
   @browser.driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
   #@browser.a(:href => /admins/).wait_until_present.click
-  @browser.link(:href => "/admins/business_partners?page=4306").click	
+  @browser.li(class: "last").link(:href => /admins/).click
   @browser.text.include?("Displaying").should == true
 end	
 

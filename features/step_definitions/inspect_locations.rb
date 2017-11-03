@@ -10,7 +10,7 @@ Given("I am on admin page and inspect pagination of location") do
   sleep 3
   @browser.link(rel:"next").when_present.click
   @browser.text.include?("Displaying 21 - 30").should == true
-  @browser.link(:href => "/admins/locations?page=550").click
+  @browser.li(class: "last").link(:href => /admins/).click
   @browser.text.include?("Displaying").should == true
   sleep 3
 end
