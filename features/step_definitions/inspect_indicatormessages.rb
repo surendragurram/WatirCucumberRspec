@@ -12,10 +12,9 @@ Given("I check for the all the valid and expiry dates") do
  @browser.button(value: "Ok").click
  sleep 3
  puts Date.today
- present_date = Date.today
  table_text = Date.parse(@browser.table[1][12].text)
  puts table_text
-if (present_date <= table_text)
+if (today_date <= table_text)
 	puts "valid"
 else
     puts "invalid" 
@@ -33,14 +32,12 @@ Given("I change the date one of the IM to todays date annd filter it") do
   @browser.select_list(name: "validity_scope").select_value("Expire today")
   @browser.button(name: "commit").click
   sleep 2
-  coltext = p @browser.table(class: "table-striped").trs.collect{ |tr| tr[12].text }
-  if coltext.index(Date.today )
-    puts "exists in the array"
-  end
-  #if (coltext = Date.today)
-	#puts "valid"
-  #else
-    #puts "invalid" 
-    sleep 4
- #end
+  table_text_one = Date.parse(@browser.table[1][12].text)
+  table_text_two = Date.parse(@browser.table[2][12].text)
+  if (today_date = table_text_two && table_text_two)
+	puts "valid"
+  else
+    puts "invalid" 
+    sleep 2
+ end
 end
