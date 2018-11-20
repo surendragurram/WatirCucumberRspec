@@ -12,3 +12,5 @@ Then("I should see created {string}") do |string|
   sleep 5
   expect(@browser.text).to include string
 end
+
+'text for commit'
